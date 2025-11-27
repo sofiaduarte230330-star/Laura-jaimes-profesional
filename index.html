@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ps. Esp. Laura María Jaimes Muñoz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ---------------- TIPOGRAFÍA ELEGANTE ---------------- */
+:root {
+  --verde: #7ac983;
+  --celeste: #74c7e4;
+  --amarillo: #f8e87a;
+  --blanco: #ffffff;
+  --negro: #1f1f1f;
+  --gris: #f7f7f7;
+  --glass: rgba(255,255,255,0.25);
+  --shadow: rgba(0,0,0,0.08);
+  --font: 'Playfair Display', serif;
+}
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: #f7fefc;
+  color: #333;
+  scroll-behavior: smooth;
+}
+/* DARK MODE */
+body.dark { background: #1a1a1a; color: var(--blanco); }
+body.dark .glass-box { background: rgba(255,255,255,0.05); }
+body.dark .faq-btn { background: var(--amarillo); }
+/* NAVBAR */
+.navbar { display: flex; justify-content: space-between; padding: 20px 50px; position: fixed; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); z-index: 999; }
+.navbar .logo { font-size: 26px; color: var(--verde); font-weight: 700; }
+.menu { display: flex; gap: 20px; }
+.menu li { list-style: none; }
+.menu a { text-decoration: none; color: #333; font-weight: 600; transition: 0.3s; }
+.menu a:hover { color: var(--celeste); }
+/* HERO */
+.hero { height: 80vh; background: linear-gradient(120deg, var(--celeste), var(--verde)); display: flex; justify-content: center; align-items: center; text-align: center; padding: 0 20px; color: white; }
+.hero h1 { font-size: 55px; margin-bottom: 10px; }
+.hero h1 span { color: var(--amarillo); }
+.hero p { font-size: 20px; margin-bottom: 25px; }
+/* BOTONES */
+.btn-primary { padding: 14px 28px; background: var(--amarillo); color: #333; border-radius: 30px; font-weight: 700; text-decoration: none; transition: 0.3s; }
+.btn-primary:hover { transform: scale(1.05); }
+/* SECCIONES */
+.section { padding: 80px 10%; }
+.title { text-align: center; font-size: 36px; margin-bottom: 40px; color: var(--verde); position: relative; }
+.title::after { content: ""; width: 60px; height: 4px; background: var(--celeste); display: block; margin: 10px auto; border-radius: 5px; }
+/* GLASS BOX */
+.glass-box { background: var(--glass); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); box-shadow: 0 8px 20px var(--shadow); }
+/* SOBRE MI Y SERVICIOS */
+.sobre-grid, .cards-grid, .enfoques-grid { display: grid; gap: 25px; }
+.sobre-grid { grid-template-columns: repeat(3,1fr); }
+.cards-grid { grid-template-columns: repeat(3,1fr); }
+.enfoques-grid { grid-template-columns: repeat(3,1fr); }
+.sobre-box, .card { background: var(--gris); padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px var(--shadow); transition: 0.3s; }
+.sobre-box:hover, .card:hover { transform: translateY(-5px); }
+.icon { font-size: 40px; margin-bottom: 15px; }
+.enfoque { background: var(--celeste); padding: 20px; text-align: center; border-radius: 15px; color: white; font-weight: 600; }
+/* EXPERIENCIA */
+.timeline { border-left: 4px solid var(--celeste); padding-left: 30px; }
+.timeline-item { margin-bottom: 30px; position: relative; }
+.marker { width: 16px; height: 16px; background: var(--celeste); position: absolute; left: -38px; top: 4px; border-radius: 50%; }
+/* FAQ */
+.faq-item { margin-bottom: 15px; }
+.faq-btn { width: 100%; padding: 15px; background: var(--celeste); border: none; border-radius: 10px; cursor: pointer; color: white; font-size: 18px; }
+.faq-content { padding: 15px; background: white; border-radius: 10px; margin-top: 10px; display: none; }
+/* AGENDA */
+.agenda-box { background: var(--glass); padding: 30px; width: 350px; margin: auto; border-radius: 20px; }
+.agenda-box input, .agenda-box textarea { width: 100%; padding: 12px; margin-top: 10px; border-radius: 10px; border: none; background: white; }
+/* CONTACTO Y FOOTER */
+.contact-form { display: flex; flex-direction: column; gap: 15px; }
+.contact-form input, .contact-form textarea { padding: 12px; border-radius: 10px; border: none; background: var(--gris); }
+footer { text-align: center; padding: 40px; background: var(--verde); color: white; }
+/* WHATSAPP FLOTANTE */
+.floating-wsp { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; padding: 18px; border-radius: 50%; font-size: 25px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+</style>
+</head>
+<body>
+
+<!-- DARK MODE -->
+<button class="dark-btn" id="darkToggle">🌙</button>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Laura Jaimes</div>
+  <ul class="menu">
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#perfil">Perfil</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#enfoques">Enfoques</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Ps. Esp. <span>Laura María Jaimes Muñoz</span></h1>
+    <p>Psicóloga Especialista en Psicología Clínica y de la Salud</p>
+    <a href="#contacto" class="btn-primary">Agenda tu cita</a>
+  </div>
+</section>
+
+<!-- PERFIL -->
+<section class="section" id="perfil">
+  <h2 class="title">Perfil Profesional</h2>
+  <div class="glass-box">
+    <p>Psicóloga Social Comunitaria con especialización en Psicología Clínica y de la Salud, con formación en Máster Universitario en Neuropsicología Clínica (UNIR, 2025). Integro intervención clínica, comunitaria y educativa, con enfoque holístico, ético y social.</p>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section class="section" id="sobre-mi">
+  <h2 class="title">Formación Académica</h2>
+  <div class="sobre-grid">
+    <div class="sobre-box">
+      <h3>Máster en Neuropsicología Clínica</h3>
+      <p>Universidad Internacional de La Rioja – UNIR, España. 2025</p>
+    </div>
+    <div class="sobre-box">
+      <h3>Especialización en Psicología Clínica y de la Salud</h3>
+      <p>Universidad Autónoma de Bucaramanga – UNAB, 2010</p>
+    </div>
+    <div class="sobre-box">
+      <h3>Psicología Social Comunitaria</h3>
+      <p>Universidad Nacional Abierta y a Distancia – UNAD, 2003</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <h2 class="title">Servicios</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>Intervención Clínica</h3>
+      <p>Diagnóstico y acompañamiento individual en salud mental.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌱</div>
+      <h3>Prevención y Promoción</h3>
+      <p>Programas de bienestar psicológico en comunidades y escuelas.</p>
+    </div>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>Liderazgo y Formación</h3>
+      <p>Capacitación profesional y mediación en entornos educativos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENFOQUES -->
+<section class="section" id="enfoques">
+  <h2 class="title">Enfoque Profesional</h2>
+  <div class="enfoques-grid">
+    <div class="enfoque">Cognitivo Conductual</div>
+    <div class="enfoque">Clínico</div>
+    <div class="enfoque">Aplicación de Pruebas Neuropsicológicas</div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="section" id="experiencia">
+  <h2 class="title">Experiencia Laboral</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <h3>UNAD (2024–2025)</h3>
+      <p>Representante del Programa de Psicología Z-CORI y Zonal de Docencia.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <h3>Alcaldía de San Vicente de Chucurí (2021–2025)</h3>
+      <p>Profesional en Auditoría en la Prestación de Servicios de Salud.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <h3>Gobernación de Santander (2019–2020)</h3>
+      <p>Profesional Especializada en Psicología.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <h2 class="title">Preguntas Frecuentes</h2>
+  <div class="faq-item">
+    <button class="faq-btn">¿Cómo puedo agendar una cita?</button>
+    <div class="faq-content">Puedes agendar directamente por WhatsApp o correo electrónico.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-btn">¿Atiendes consultas online?</button>
+    <div class="faq-content">Sí, ofrecemos sesiones online seguras y confidenciales.</div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <h2 class="title">Contacto y Agenda</h2>
+  <div class="agenda-box">
+    <form class="contact-form">
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo" required>
+      <input type="tel" placeholder="Teléfono">
+      <textarea placeholder="Mensaje" rows="5"></textarea>
+      <button type="submit" class="btn-primary">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Ps. Esp. Laura María Jaimes Muñoz | Cel: 311 811 3308 | lauramjaimesm@gmail.com</p>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/573118113308" target="_blank" class="floating-wsp">💬</a>
+
+<script>
+// FAQ ACORDEÓN
+document.querySelectorAll(".faq-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    let content = btn.nextElementSibling;
+    content.style.display = content.style.display === "block" ? "none" : "block";
+  });
+});
+
+// DARK MODE
+const darkToggle = document.getElementById("darkToggle");
+darkToggle.addEventListener("click", () => { document.body.classList.toggle("dark"); });
+</script>
+</body>
+</html>
